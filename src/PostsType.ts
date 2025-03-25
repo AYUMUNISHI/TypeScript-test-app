@@ -1,4 +1,4 @@
-export type post = {
+export type Post = {
   id: number;
   title: string;
   thumbnailUrl: string;
@@ -7,11 +7,11 @@ export type post = {
   createdAt: string;
 }
 
-export type PostsType = {
-  posts: post[];
+export type Posts = {
+  posts: Post[];
 };
 
 export type ApiResponse = {
   message: string;
-  post: post;
+  post: Post;
 };

@@ -1,16 +1,16 @@
 import {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_BASE_URL } from '../constants';
-import {ApiResponse, post, PostsType} from '../PostsType';
+import {ApiResponse, Post} from '../PostsType';
 
 
 
 
 
 
-export const Show = () => {
+export const Show: React.FC = () => {
   const { id } = useParams()
-  const [post, setPost] = useState<post | null>(null)
+  const [post, setPost] = useState<Post | null>(null)
   const [loading, setLoading]= useState<boolean>(false)
 
 
@@ -31,7 +31,7 @@ export const Show = () => {
     return <div>読み込み中...</div>
   }
   
-  if(!loading && !post){
+  if(!post){
     return <div>記事がありません</div>
   }
 

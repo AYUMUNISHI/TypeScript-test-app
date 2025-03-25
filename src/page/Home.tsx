@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../constants";
-import {PostsType} from '../PostsType';
-import {post} from '../PostsType';
+import {Posts,Post} from '../PostsType';
 
 
 
@@ -10,7 +9,7 @@ import {post} from '../PostsType';
 
 export default function Home(){
 
-  const [posts, setPosts] = useState<post[] | null>(null)
+  const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] =useState<boolean>(false)
 
   useEffect(() => {
@@ -21,7 +20,7 @@ export default function Home(){
         if (!response.ok) {
           throw new Error('ネットワークエラー');
         }
-        const data = await response.json() as PostsType; // 型を指定
+        const data = await response.json() as Posts; // 型を指定
         setPosts(data.posts); // APIから取得したデータを使用
       } catch (error) {
         console.error('データの取得に失敗しました:', error);
@@ -36,14 +35,14 @@ export default function Home(){
     return<div>読み込み中...</div>
   }
 
-  if(!loading && !posts){
+  if(!posts.length){
     return<div>記事がありません</div>
   }
 
   return (
     <>
       {
-        posts && posts.map((post) => (
+        posts.map((post) => (
           <div key={post.id}>
             <Link to={`/posts/${post.id}`}>
               <div
