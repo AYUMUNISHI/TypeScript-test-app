@@ -5,6 +5,7 @@ import posts from './data/Posts';
 import './index.css';
 import { Show } from './page/Show';
 import { post } from './PostsType';
+import { Contact } from './page/contact/Contact';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/posts/:id' element={<Show />}/>
+          <Route path='/contact' element={<Contact />}/>
         </Routes>
       </div>
     </BrowserRouter>

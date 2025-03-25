@@ -38,11 +38,11 @@ export const Show = () => {
   return (
     <>
       <div
-      className="container mx-auto my-12 p-4 "
+      className="container mx-auto my-12 p-4 :"
     >
       <div className="bg-slate-800">
       {post && (
-        <img src={post.thumbnailUrl} alt="" className="" />
+        <img src={post.thumbnailUrl} alt="" className="object-cover h-full w-full" />
       )}
       </div>
       <div className="p-4">
